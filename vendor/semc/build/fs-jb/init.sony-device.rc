@@ -1,0 +1,16 @@
+on init
+    # setup the global environment
+    export SECONDARY_STORAGE /mnt/usbdisk
+
+on boot
+    # Generate flag file for datarequest monitoring.
+    rm /data/datarequest_flg
+    write /data/datarequest_flg 12
+    chmod 644 /data/datarequest_flg
+
+on boot
+    # Stamina Mode
+    chown system system /sys/devices/platform/sony_ssm/enable
+    chown system system /sys/devices/platform/sony_ssm/set_late_resume_notifications
+    chown system system /sys/devices/platform/sony_ssm/set_request_next_suspend_prepare_notification
+

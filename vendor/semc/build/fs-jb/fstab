@@ -1,0 +1,8 @@
+# These declarations must match the mount statements under 'on fs' in
+# <buildroot>/device/semc/blue/files/init.blue.rc
+# and the declarations in
+# device/semc/blue/fsconfig.xml
+# (mbr_id + 1)
+
+/data             ext4 /dev/block/platform/msm_sdcc.1/by-num/p14
+/cache            ext4 /dev/block/platform/msm_sdcc.1/by-num/p13
