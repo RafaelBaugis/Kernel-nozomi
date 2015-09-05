@@ -1,23 +1,25 @@
 #!/bin/bash
 
+source ./config.sh
+
 sudo apt-get update && \
 if [ "$(uname -m)" = "x86_64" ]; then
 	sudo apt-get -f install --reinstall gnupg openjdk-6-jdk flex bison gperf libsdl1.2-dev perl sparse \
 	original-awk libesd0-dev build-essential dpkg-cross qt4-dev-tools lzop lzma gzip zip curl \
 	libncurses5-dev zlib1g-dev lib32z1-dev lib32ncurses5-dev gcc-multilib \
-	g++-multilib gettext texinfo git-core && sudo apt-get install gcc-4.7-arm-linux-gnueabi && touch apt-ok
+	g++-multilib gettext texinfo git-core && sudo apt-get install gcc-${GCCV}-arm-linux-gnueabi && touch apt-ok
 else
 	sudo apt-get -f install --reinstall gnupg openjdk-6-jdk flex bison gperf libsdl1.2-dev perl sparse \
 	original-awk libesd0-dev build-essential dpkg-cross qt4-dev-tools lzop lzma gzip zip curl \
-	libncurses5-dev zlib1g-dev gettext texinfo git-core && sudo apt-get install gcc-4.7-arm-linux-gnueabi && touch apt-ok
+	libncurses5-dev zlib1g-dev gettext texinfo git-core && sudo apt-get install gcc-${GCCV}-arm-linux-gnueabi && touch apt-ok
 fi
 
 if [ -f apt-ok ]; then
 	rm apt-ok
 	sudo ln -f -s /usr/bin/moc-qt4 /usr/bin/moc
-	sudo ln -f -s /usr/bin/arm-linux-gnueabi-cpp-4.7 /usr/bin/arm-linux-gnueabi-cpp
-	sudo ln -f -s /usr/bin/arm-linux-gnueabi-gcc-4.7 /usr/bin/arm-linux-gnueabi-gcc
-	sudo ln -f -s /usr/bin/arm-linux-gnueabi-gcov-4.7 /usr/bin/arm-linux-gnueabi-gcov
+	sudo ln -f -s /usr/bin/arm-linux-gnueabi-cpp-${GCCV} /usr/bin/arm-linux-gnueabi-cpp
+	sudo ln -f -s /usr/bin/arm-linux-gnueabi-gcc-${GCCV} /usr/bin/arm-linux-gnueabi-gcc
+	sudo ln -f -s /usr/bin/arm-linux-gnueabi-gcov-${GCCV} /usr/bin/arm-linux-gnueabi-gcov
 	sudo apt-get clean && sudo apt-get autoremove
 	echo 'System	- Up-dated';
 else

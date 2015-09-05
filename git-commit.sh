@@ -4,7 +4,7 @@ source ./config.sh
 
 source ./clean.sh
 
-cd $WORKDIR
+cd ${WORKDIR}
 
 if [ -f clean0 ] && [ -f clean1 ]; then
 	rm clean0 && rm clean1
