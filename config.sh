@@ -32,6 +32,4 @@ export INCLUDES="-I${TOOLCHAINS_HOME}/include \
 -I${TOOLCHAINS_HOME}/lib/gcc/arm-linux-gnueabi/${GCCV}/include-fixed"
 
 export ARCH=arm
-export FLAGS='cc-option,-marm,-mlittle-endian,-mtune=cortex-A8,-mfpu=neon, \
--mfloat-abi=hard,-mabi=aapcs-linux,-mno-thumb-interwork,-march=armv7-a, \
--march=armv5t,-Wa,-march=armv7-a'
+export FLAGS='cc-option,-marm,-mlittle-endian,-mtune=cortex-A8,-mfpu=neon,-mfloat-abi=hard,-mabi=aapcs-linux,-mno-thumb-interwork,-march=armv7-a,-march=armv5t,-Wa,-march=armv7-a'

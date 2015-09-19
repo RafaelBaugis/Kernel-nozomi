@@ -1,8 +1,10 @@
 #!/bin/bash
 
+source ./rootcheck.sh
+
 source ./config.sh
 
-source ./clean.sh
+source ./realclean.sh
 
 cd ${WORKDIR}
 
