@@ -10,8 +10,10 @@ cd ${WORKDIR}
 
 if [ -f clean0 ] && [ -f clean1 ]; then
 	rm clean0 && rm clean1
-	git add .
-	git commit -a && touch commit
+	if [ ! -f commit ]; then
+		git add .
+		git commit -a && touch commit
+	fi
 fi
 
 if [ -f commit ]; then
