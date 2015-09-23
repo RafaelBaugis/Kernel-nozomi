@@ -1,11 +1,5 @@
 #!/bin/bash
 
-source ./rootcheck.sh
-
-source ./config.sh
-
-cd ${WORKDIR}
-
 die () {
     echo >&1 "$@"
     exit 1
@@ -13,10 +7,16 @@ die () {
 
 INPUT=$1
 
-[ "$1" = "" ] && echo "Need Argument"
-[ "$1" = "" ] && echo "1 = Clean and Compile"
-[ "$1" = "" ] && echo "2 = Clean Configure and Compile"
-[ "$1" = "" ] && die "3 = DistClean load Defconfig, Configure and Compile"
+if [ ${INPUT} = 1 ] || [ ${INPUT} = 2 ] || [ ${INPUT} = 3 ]; then
+	source ./config.sh
+	cd ${WORKDIR}
+else
+	echo "Valid Argument List"
+	echo "1 = Clean and Compile"
+	echo "2 = Clean Configure and Compile"
+	echo "3 = DistClean load Defconfig, Configure and Compile"
+	die "Exp.: user@machine# sudo ./compile.sh 3"
+fi
 
 if [ ${INPUT} = 1 ] || [ ${INPUT} = 2 ]; then
 	cd ${LINUXDIR} && make clean ${FLAGS} || exit

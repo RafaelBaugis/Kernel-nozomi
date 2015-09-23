@@ -1,19 +1,17 @@
 #!/bin/bash
 
-source ./rootcheck.sh
-
 source ./config.sh
 
 apt-get update && \
 if [ "$(uname -m)" = "x86_64" ]; then
 	apt-get -f install --reinstall gnupg openjdk-6-jdk flex bison gperf libsdl1.2-dev perl sparse \
 	original-awk libesd0-dev build-essential dpkg-cross qt4-dev-tools lzop lzma gzip zip curl \
-	libncurses5-dev zlib1g-dev lib32z1-dev lib32ncurses5-dev gcc-multilib \
-	g++-multilib gettext texinfo git-core && apt-get install ${GCCV}-arm-linux-* && touch apt-ok
+	zlib1g-dev libncurses5-dev gettext texinfo git-core lib32z1-dev lib32ncurses5-dev gcc-multilib \
+	g++-multilib && apt-get install ${GCCV}-arm-linux-* && touch apt-ok
 else
 	apt-get -f install --reinstall gnupg openjdk-6-jdk flex bison gperf libsdl1.2-dev perl sparse \
 	original-awk libesd0-dev build-essential dpkg-cross qt4-dev-tools lzop lzma gzip zip curl \
-	libncurses5-dev zlib1g-dev gettext texinfo git-core && apt-get install ${GCCV}-arm-linux-* && touch apt-ok
+	zlib1g-dev libncurses5-dev gettext texinfo git-core && apt-get install ${GCCV}-arm-linux-* && touch apt-ok
 fi
 
 if [ -f apt-ok ]; then
@@ -24,6 +22,7 @@ if [ -f apt-ok ]; then
 	ln -f -s /usr/bin/arm-linux-gnueabi-gcov-${GCCV} /usr/bin/arm-linux-gnueabi-gcov
 	apt-get clean && sudo apt-get autoremove
 	echo 'System	- Up-dated';
+	export INSTDEP=1
 else
 	echo 'apt-get update	- FAIL'; sleep 5; exit
 fi

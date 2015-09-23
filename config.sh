@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source rootcheck.sh
+
 ##################### Options ################
 export RAMDISK=lzma  #"lzo","gz","bz2","lzma"#
 export KERNEL=Image  #"Image","zImage"       #
@@ -7,6 +9,16 @@ export ANDROID=jb    #"jb","kk"              #
 export RECOVERY=CWM  #"CWM","TWRP"           #
 export GCCV=4.6      #"4.6","4.7"            #
 ##############################################
+
+if [ ! ${INSTDEP} ]; then
+	if [ ! -f /usr/bin/arm-linux-gnueabi-gcc-${GCCV} ] || [ ! -f /usr/bin/arm-linux-gnueabi-gcov-${GCCV} ]; then
+		export INSTDEP=0 && source install_dep.sh
+	else
+		ln -f -s /usr/bin/arm-linux-gnueabi-cpp-${GCCV} /usr/bin/arm-linux-gnueabi-cpp
+		ln -f -s /usr/bin/arm-linux-gnueabi-gcc-${GCCV} /usr/bin/arm-linux-gnueabi-gcc
+		ln -f -s /usr/bin/arm-linux-gnueabi-gcov-${GCCV} /usr/bin/arm-linux-gnueabi-gcov
+	fi
+fi
 
 export KBUILD_BUILD_USER=RafaeL_
 export KBUILD_BUILD_HOST=_BaugiS

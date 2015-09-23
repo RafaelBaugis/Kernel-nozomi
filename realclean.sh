@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ./rootcheck.sh
-
 source ./config.sh
 
 find ${WORKDIR} -name '*.sh' -exec chmod a+x {} \; || exit

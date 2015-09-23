@@ -26,7 +26,7 @@ static struct ambient_temperature_limit limit_tbl = {
 struct device_data device_data = {
 	.id_bat_reg = &id_bat_reg,
 	.limit_tbl = &limit_tbl,
-	.battery_capacity_mah = 1750,
-	.maximum_charging_current_ma = 1550,
+	.battery_capacity_mah = 1700,
+	.maximum_charging_current_ma = 1000,
 	.battery_connector_resistance = 0,
 };

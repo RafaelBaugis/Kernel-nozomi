@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ./rootcheck.sh
-
 source ./config.sh
 
 source ./realclean.sh
