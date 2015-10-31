@@ -6,7 +6,7 @@ source rootcheck.sh
 export RAMDISK=lzma  #"lzo","gz","bz2","lzma"#
 export KERNEL=Image  #"Image","zImage"       #
 export ANDROID=jb    #"jb","kk"              #
-export RECOVERY=CWM  #"CWM","TWRP"           #
+export RECOVERY=TWRP #"CWM","TWRP"           #
 export GCCV=4.6      #"4.6","4.7"            #
 ##############################################
 

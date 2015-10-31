@@ -7,7 +7,7 @@ die () {
 
 INPUT=$1
 
-if [ ${INPUT} = 1 ] || [ ${INPUT} = 2 ] || [ ${INPUT} = 3 ]; then
+if [ ${INPUT} = 1 ] 2> /dev/null || [ ${INPUT} = 2 ] 2> /dev/null || [ ${INPUT} = 3 ] 2> /dev/null; then
 	source ./config.sh
 	cd ${WORKDIR}
 else
